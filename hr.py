@@ -67,3 +67,15 @@ class CommissionEmployee(SalaryEmployee):
     def calculate_payroll(self):
         fixed = super().calculate_payroll()
         return fixed + self.commission
+
+
+# This class doesn't derive from Employee
+# But it exposes the same Interface
+# required by PayRollSystem
+class DisgruntledEmployee:
+    def __init__(self, id, name):
+        self.id = id
+        self.name = name
+
+    def calculate_payroll(self):
+        return 10000
