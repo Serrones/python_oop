@@ -8,6 +8,7 @@ from a Base class, you created a relationship where Derived
 is a specialized version of Base
 
 """
+from abc import ABC, abstractclassmethod
 
 
 # Interface
@@ -24,11 +25,14 @@ class PayRollSystem:
 
 # base class 
 # Employee that handles the common interface for every employee type
-class Employee:
+class Employee(ABC):
     def __init__(self, id, name):
         self.id = id
         self.name = name
 
+    @abstractclassmethod
+    def calculate_payroll(self):
+        pass
 
 # derived class
 # SalaryEmployee that inherits Employee
