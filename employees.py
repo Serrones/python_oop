@@ -71,3 +71,13 @@ class SalesPerson(CommissionEmployee):
 class FactoryWorker(HourlyEmployee):
     def work(self, hours):
         print(f'{self.name} manufactures gadgets for {hours} hours.')
+
+# This class will cause diamond problem,
+# because it uses multiple inheritance
+# You need force the right methods to work
+class TemporarySecretary(Secretary, HourlyEmployee):
+    def __init__(self, id, name, hours_worked, hour_rate):
+        HourlyEmployee.__init__(self, id, name, hours_worked, hour_rate)
+
+    def calculate_payroll(self):
+        return HourlyEmployee.calculate_payroll(self)
